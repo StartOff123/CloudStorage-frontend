@@ -1,5 +1,7 @@
-import { Sidebar } from '@/components/Sidebar'
 import React from 'react'
+
+import { Sidebar } from '@/components/Sidebar'
+
 import styles from "@/styles/Home.module.scss"
 
 export const DashboardLayout: React.FC<React.PropsWithChildren> = ({ children }) => {

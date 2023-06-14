@@ -1,7 +1,8 @@
+import React from 'react'
+import { useRouter } from 'next/router'
 import { FileOutlined, FileImageOutlined, DeleteOutlined } from '@ant-design/icons'
 import { Menu } from 'antd'
-import router, { useRouter } from 'next/router'
-import React from 'react'
+
 import { UploadButton } from '../UploadButton'
 
 import styles from '@/styles/Home.module.scss'

@@ -1,10 +1,9 @@
-import { GetServerSidePropsContext, NextPage } from 'next'
 import React from 'react'
+import { GetServerSidePropsContext, NextPage } from 'next'
+
 import { checkAuth } from '@/utils/CheckAuth'
 import { Layout } from '@/layouts/Layout'
 import * as Api from '@/api'
-import { FileList } from '@/components/FileList'
-
 import { FileItem } from '@/api/dto/files.dto'
 import { DashboardLayout } from '@/layouts/DashboardLayout'
 import { Files } from '@/modules/Files'

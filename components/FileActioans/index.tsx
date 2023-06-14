@@ -1,7 +1,7 @@
 import React from 'react'
+import { Button } from 'antd'
 
 import styles from './FileActions.module.scss'
-import { Button, Popconfirm } from 'antd'
 
 interface FileActionsProps {
     onClickRemove: VoidFunction

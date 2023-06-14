@@ -1,7 +1,19 @@
 .root {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    // grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 5%;
     grid-row-gap: 50px;
     padding: 30px 20px;
+}
+
+.filename {
+    position: absolute;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 30px;
+    border-radius: 5px 0 0 5px;
+    background: #0071ce;
+    bottom: 20px;
+    right: 0;
 }

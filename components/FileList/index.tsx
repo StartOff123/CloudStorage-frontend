@@ -1,11 +1,11 @@
 import React from 'react'
+import Selecto from 'react-selecto'
+
 import { FileItem } from '@/api/dto/files.dto'
 import { FileCard } from '../FileCard'
-import Selecto from 'react-selecto'
-import { Drawer } from 'antd'
+import { DrawerFile } from '../DrawerFile'
 
 import styles from './FileList.module.scss'
-import { DrawerFile } from '../DrawerFile'
 
 export type FileSelectType = 'select' | 'unselect'
 
@@ -15,7 +15,7 @@ interface FileListProps {
 }
 
 interface DrawerItemProps {
-    id: number[] 
+    id: number[]
     filename: string
     originalName: string
     size: number
@@ -24,6 +24,7 @@ interface DrawerItemProps {
 export const FileList: React.FC<FileListProps> = ({ items, onFileSelect }) => {
     const [open, setOpen] = React.useState(false)
     const [currentItem, setCurrentItem] = React.useState<DrawerItemProps>({ id: [], filename: '', originalName: '', size: 0 })
+    const [fileName, setFileName] = React.useState('')
 
     const showDrawer = (item: DrawerItemProps) => {
         setOpen(true)
@@ -34,7 +35,7 @@ export const FileList: React.FC<FileListProps> = ({ items, onFileSelect }) => {
         <div className={styles.root}>
             {
                 items.map(item => (
-                    <div data-id={item.id} key={item.id} className='file' onDoubleClick={() => showDrawer({ id: [ item.id ], filename: item.filename, originalName: item.originalName, size: item.size })}>
+                    <div data-id={item.id} key={item.id} className='file' onMouseEnter={() => setFileName(item.originalName)} onDoubleClick={() => showDrawer({ id: [item.id], filename: item.filename, originalName: item.originalName, size: item.size })}>
                         <FileCard filename={item.filename} originalName={item.originalName} />
                     </div>
                 ))
@@ -68,6 +69,9 @@ export const FileList: React.FC<FileListProps> = ({ items, onFileSelect }) => {
                     })
                 }}
             />
+            <div className={styles.filename}>
+                <p>{fileName ? fileName : 'Наведите на файл'}</p>
+            </div>
         </div>
     )
 }

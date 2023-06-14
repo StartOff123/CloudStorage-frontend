@@ -1,13 +1,14 @@
-import { Button, Drawer, Modal, Popconfirm } from 'antd'
-import numeral from 'numeral'
 import React from 'react'
+import { Button, Drawer, Modal, Image } from 'antd'
+import { ExclamationCircleOutlined, FileTextOutlined } from '@ant-design/icons'
+import numeral from 'numeral'
 
 import { getColorByExtension } from '@/utils/getColorByExtension'
 import { getExtensionFormFileName } from '@/utils/getExtensionFormFileName'
 import { isImage } from '@/utils/isImage'
-import { ExclamationCircleOutlined, FileTextOutlined } from '@ant-design/icons'
-import styles from './DrawerFile.module.scss'
 import * as Api from '@/api'
+
+import styles from './DrawerFile.module.scss'
 
 interface DrawerFileProps {
     id: number[]
@@ -21,11 +22,10 @@ interface DrawerFileProps {
 export const DrawerFile: React.FC<DrawerFileProps> = ({ filename, originalName, open, setOpen, size, id }) => {
     const [openLogoutModal, setOpenLogoutModal] = React.useState(false)
 
-    const ext = getExtensionFormFileName(filename)
+    const ext = String(getExtensionFormFileName(filename))
     const imageUrl = ext && isImage(ext) ? 'http://localhost:7777/uploads/' + filename : ''
 
-    const color = getColorByExtension(ext)
-    const classColor = styles[color]
+    const extSettings = getColorByExtension(ext)
 
     const fileSize = numeral(size).format('0.0 b')
 
@@ -56,28 +56,34 @@ export const DrawerFile: React.FC<DrawerFileProps> = ({ filename, originalName, 
     const handleCancelLogout = () => setOpenLogoutModal(false)
 
     return (
-        <Drawer headerStyle={{ background: '#0071ce' }} title={`Файл: ${originalName}`} mask={false} placement="right" onClose={onClose} open={open}>
+        <Drawer headerStyle={{ background: '#0071ce' }} size='large' style={{ maxWidth: 500 }} title={`Файл: ${originalName}`} mask={false} placement="right" onClose={onClose} open={open}>
             <div className={styles.root}>
                 <div className={styles.top}>
                     <div className={styles.img}>
                         {
-                            isImage(ext) ? <img className={styles.image} src={imageUrl} alt='File' /> : <FileTextOutlined />
+                            isImage(ext) ?
+                                <Image preview={{ mask: 'Посмотреть изображение',  }} src={imageUrl} className={styles.image} /> :
+                                extSettings ? (
+                                    <img className={styles.icon} src={extSettings.icon.src} alt="" />
+                                ) : (
+                                    <FileTextOutlined />
+                                )
                         }
-                        <div className={classColor}>{ext}</div>
+                        <div style={extSettings && { background: extSettings.color }}>{ext}</div>
                     </div>
                     <div className={styles.info}>
                         <p>Имя файла: {filename}</p>
                         <p>Оригинальное имя файла: {originalName}</p>
                         <p>Размер файла: {fileSize}</p>
                     </div>
-                </div>
-                <div className={styles.btn}>
-                    <Button style={{ marginRight: '10px' }}>
-                        Поделиться
-                    </Button>
-                    <Button onClick={confirm} type='primary' danger>
-                        Удалить
-                    </Button>
+                    <div className={styles.btn}>
+                        <Button style={{ marginRight: '10px' }}>
+                            Поделиться
+                        </Button>
+                        <Button onClick={confirm} type='primary' danger>
+                            Удалить
+                        </Button>
+                    </div>
                 </div>
             </div>
         </Drawer>

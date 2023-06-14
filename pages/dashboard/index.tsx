@@ -3,11 +3,9 @@ import React from 'react'
 import { checkAuth } from '@/utils/CheckAuth'
 import { Layout } from '@/layouts/Layout'
 import * as Api from '@/api'
-import { FileList } from '@/components/FileList'
 
 import { FileItem } from '@/api/dto/files.dto'
 import { DashboardLayout } from '@/layouts/DashboardLayout'
-import { FileActions } from '@/components/FileActioans'
 import { Files } from '@/modules/Files'
 
 interface DashboardPageProps {
@@ -17,13 +15,13 @@ interface DashboardPageProps {
 const DashboardPage: NextPage<DashboardPageProps> = ({ items }) => {
   return (
     <DashboardLayout>
-      <Files items={items} withActions/>
+      <Files items={items} withActions />
     </DashboardLayout>
   )
 }
 
 DashboardPage.getLayout = (page: React.ReactNode) => {
-  return <Layout title='Панель управления / Главная'>{page}</Layout>
+  return <Layout title="Панель управления / Главная">{page}</Layout>
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {

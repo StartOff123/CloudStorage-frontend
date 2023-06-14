@@ -1,13 +1,14 @@
-import { Button, Modal } from 'antd'
-import { GetServerSidePropsContext, NextPage } from 'next'
 import React from 'react'
+import { GetServerSidePropsContext, NextPage } from 'next'
+import { Button, Modal } from 'antd'
+import { ExclamationCircleOutlined } from '@ant-design/icons'
+
 import * as Api from '@/api'
 import { User } from '@/api/dto/auth.dto'
 import { checkAuth } from '@/utils/CheckAuth'
 import { Layout } from '@/layouts/Layout'
 
 import styles from '@/styles/Profile.module.scss'
-import { ExclamationCircleOutlined } from '@ant-design/icons'
 
 interface DashboardProfilePageProps {
     userData: User

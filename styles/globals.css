@@ -22,16 +22,15 @@ a {
 }
 
 .file {
-    background-color: #e0e0e0;
-    box-shadow: 3px 3px 5px 0 #c5c5c5;
     height: fit-content;
-    border: 2px solid transparent;
+    border: 2px solid #0071ce52;
+    width: 150px;
     border-radius: 10px;
     transition: all .15s;
 }
 
 .file:hover {
-    box-shadow: 5px 5px 2px 0 #c5c5c5;
+    border: 2px solid #0071ce83;
 }
 
 .file.active {
@@ -40,7 +39,7 @@ a {
 }
 
 .empty-block {
-    margin: 200px;
+    margin: 200px 0;
 }
 
 .ant-drawer-title {
@@ -58,4 +57,30 @@ a {
 
 .ant-drawer-body {
     padding: 0 !important;
+}
+
+.ant-drawer-content-wrapper {
+    width: auto !important;
+}
+
+.ant-image-mask {
+    margin: 10px !important;
+    padding: 0 !important;
+}
+
+.anticon-eye {
+    display: flow-root !important;
+}
+
+.anticon-eye svg {
+    font-size: 40px !important;
+}
+
+.ant-image {
+    background: transparent !important;
+    margin: 0 !important;
+}
+
+.ant-image-mask-info {
+    background: transparent !important;
 }

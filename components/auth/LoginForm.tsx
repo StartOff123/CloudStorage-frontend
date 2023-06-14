@@ -1,9 +1,11 @@
 import React from 'react'
-import style from './Auth.module.scss'
 import { Button, Form, Input, notification } from 'antd'
+import { setCookie } from 'nookies'
+
 import { LoginFormDTO } from '@/api/dto/auth.dto'
 import * as Api from '@/api'
-import { setCookie } from 'nookies'
+
+import styles from './Auth.module.scss'
 
 const LoginForm: React.FC = () => {
   const onSubmit = async (values: LoginFormDTO) => {
@@ -33,7 +35,7 @@ const LoginForm: React.FC = () => {
   }
 
   return (
-    <div className={style.formBlock}>
+    <div className={styles.formBlock}>
       <Form
         name='basic'
         labelCol={{

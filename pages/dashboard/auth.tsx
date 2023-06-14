@@ -6,30 +6,30 @@ import { Tabs } from 'antd'
 import RegisterForm from '@/components/auth/RegisterForm'
 
 const AuthPage: NextPage = () => {
-  return (
-    <>
-        <Head>
-            <title>Панель управления / Авторизация </title>
-        </Head>
-        <main style={{ width: 400, margin: '50px auto' }}>
-            <Tabs 
-                items={[
-                    {
-                        label: 'Войти',
-                        key: '1',
-                        children: <LoginForm />
-                    },
-                    {
-                        label: 'Регистрация',
-                        key: '2',
-                        children: <RegisterForm />
-                    },
-                ]}
-            />
-                
-        </main>
-    </>
-  )
+    return (
+        <>
+            <Head>
+                <title>Панель управления / Авторизация </title>
+            </Head>
+            <main style={{ width: 400, margin: '50px auto' }}>
+                <Tabs
+                    items={[
+                        {
+                            label: 'Войти',
+                            key: '1',
+                            children: <LoginForm />
+                        },
+                        {
+                            label: 'Регистрация',
+                            key: '2',
+                            children: <RegisterForm />
+                        },
+                    ]}
+                />
+
+            </main>
+        </>
+    )
 }
 
 export default AuthPage

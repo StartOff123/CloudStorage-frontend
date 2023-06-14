@@ -1,9 +1,11 @@
 import React from 'react'
-import style from './Auth.module.scss'
 import { Button, Form, Input, notification } from 'antd'
+import { setCookie } from 'nookies'
+
 import { RegisterFormDTO } from '@/api/dto/auth.dto'
 import * as Api from '@/api'
-import { setCookie } from 'nookies'
+
+import style from './Auth.module.scss'
 
 const RegisterForm: React.FC = () => {
   const onSubmit = async (values: RegisterFormDTO) => {

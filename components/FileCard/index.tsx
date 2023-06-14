@@ -1,10 +1,11 @@
 import React from 'react'
+import { FileTextOutlined } from '@ant-design/icons'
 
-import styles from './FileCard.module.scss'
 import { getExtensionFormFileName } from '@/utils/getExtensionFormFileName'
 import { isImage } from '@/utils/isImage'
 import { getColorByExtension } from '@/utils/getColorByExtension'
-import { FileTextOutlined } from '@ant-design/icons'
+
+import styles from './FileCard.module.scss'
 
 interface FileCardProps {
     filename: string,
@@ -12,18 +13,23 @@ interface FileCardProps {
 }
 
 export const FileCard: React.FC<FileCardProps> = ({ originalName, filename }) => {
-    const ext = getExtensionFormFileName(filename)
+    const ext = String(getExtensionFormFileName(filename))
     const imageUrl = ext && isImage(ext) ? 'http://localhost:7777/uploads/' + filename : ''
 
-    const color = getColorByExtension(ext)
-    const classColor = styles[color]
+    const extSettings = getColorByExtension(ext)
 
     return (
         <div className={styles.root}>
             <div className={styles.icon}>
-                <i className={classColor}>{ext}</i>
+                <i style={ extSettings && { background: extSettings.color }}>{ext}</i>
                 {
-                    isImage(ext) ? <img className={styles.image} src={imageUrl} alt='File' /> : <FileTextOutlined />
+                    isImage(ext) ? 
+                        <img className={styles.image} src={imageUrl} alt='File' /> : 
+                        extSettings ? (
+                            <img className={styles.iconImg} src={extSettings.icon.src} alt="" />
+                        ) : (
+                            <FileTextOutlined />
+                        )
                 }
             </div>
             <div className={styles.filename}>

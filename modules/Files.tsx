@@ -63,7 +63,7 @@ export const Files: React.FC<FilesProps> = ({ items, withActions }) => {
             {
                 files.length ?
                     <>
-                        {withActions && <FileActions onClickRemove={confirm} onCliclShare={onFileShare} isActive={selectIds.length > 0} />}
+                        {withActions && <FileActions onClickRemove={confirm } onCliclShare={onFileShare} isActive={selectIds.length > 0} />}
                         <FileList items={files} onFileSelect={onFileSelect}/>
                     </>
                     : (

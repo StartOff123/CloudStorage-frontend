@@ -1,9 +1,11 @@
 import React from 'react'
-import styles from './Header.module.scss'
+import { useRouter } from 'next/router'
 import { Avatar, Button, Layout, Menu, Modal, Popover } from 'antd'
 import { CloudOutlined, ExclamationCircleOutlined } from '@ant-design/icons'
-import { useRouter } from 'next/router'
+
 import * as Api from '@/api'
+
+import styles from './Header.module.scss'
 
 export const Header: React.FC = () => {
     const [openLogoutModal, setOpenLogoutModal] = React.useState(false)

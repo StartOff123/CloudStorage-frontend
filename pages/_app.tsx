@@ -1,10 +1,11 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
-import React from "react";
+import React from "react"
+import type { AppProps } from "next/app"
+
+import "@/styles/globals.css"
 
 interface Props extends AppProps {
     Component: AppProps["Component"] & {
-        getLayout: (page: React.ReactElement) => React.ReactNode;
+        getLayout: (page: React.ReactElement) => React.ReactNode
     }
 }
 
